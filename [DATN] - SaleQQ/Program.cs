@@ -66,6 +66,16 @@ builder.Services.Configure<DataProtectionTokenProviderOptions>(options =>
 
 #endregion
 
+#region
+
+builder.Services.Configure<IdentityOptions>(option =>
+{
+    option.SignIn.RequireConfirmedEmail = true;
+});
+
+var emailConfig = configuration.GetSection("EmailConfiguration").Get<EmailConfig>();
+
+#endregion
 
 #region Swagger
 
@@ -119,6 +129,8 @@ builder.Services.AddCors(setup =>
 
 builder.Services.AddCors();
 builder.Services.AddScoped<AuthService, AuthServiceImpl>();
+builder.Services.AddSingleton<EmailConfig>();
+builder.Services.AddScoped<EmailService, EmailServiceImpl>();
 
 var app = builder.Build();
 
