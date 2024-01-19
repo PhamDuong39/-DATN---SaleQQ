@@ -129,7 +129,7 @@ builder.Services.AddCors(setup =>
 
 builder.Services.AddCors();
 builder.Services.AddScoped<AuthService, AuthServiceImpl>();
-builder.Services.AddSingleton<EmailConfig>();
+builder.Services.AddSingleton(emailConfig);
 builder.Services.AddScoped<EmailService, EmailServiceImpl>();
 
 var app = builder.Build();

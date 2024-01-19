@@ -1,7 +1,6 @@
 ﻿using _DATN____SaleQQ.Common.Config;
 using MimeKit;
 using MailKit.Net.Smtp;
-using MimeKit;
 
 namespace _DATN____SaleQQ.Service.Impl
 {
@@ -43,9 +42,9 @@ namespace _DATN____SaleQQ.Service.Impl
                 client.Authenticate(_emailConfig.UserName, _emailConfig.Password);
                 client.Send(mimeMessage);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
             finally
             {
